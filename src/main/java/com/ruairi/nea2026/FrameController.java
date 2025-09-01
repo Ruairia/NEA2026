@@ -6,7 +6,7 @@ public class FrameController {
     private int currentFrame;
     private Image[] frames;
 
-    public Image getCurrentFrame(){
+    public Image getCurrentFrame(double currentTime){
         return frames[currentFrame];
     }
 
