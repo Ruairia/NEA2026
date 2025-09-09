@@ -3,8 +3,18 @@ package com.ruairi.nea2026;
 
 import java.util.ArrayList;
 
+import static com.ruairi.nea2026.State.*;
+
 public class Hero extends Sprite{
+    //Define Constants
+    public static final float JUMPSTRENGTH = -10;
+    public static final float MAXCOYOTETIME = 0.2f;
+
+
+
+    double coyoteTime=0;
     int health;
+    boolean onGround;
     Weapon currentWeapon;
 
     public Hero(float posX, float posY, float velocityX, float velocityY, float width, float height) {
@@ -14,10 +24,17 @@ public class Hero extends Sprite{
 
     public void jump(){
         //Handle logic for jumping
+        if (onGround){
+            velocityY = JUMPSTRENGTH;
+            coyoteTime=MAXCOYOTETIME;
+        }
+        else if (coyoteTime>0){
+            velocityY = JUMPSTRENGTH;
+        }
     }
 
     public void crouch(){
-
+        setCurrentState(CROUCHING); //Keeps same direction as before
     }
 
     public void move(ArrayList<String> input){
@@ -35,6 +52,16 @@ public class Hero extends Sprite{
             crouch();
         }
     }
+
+    public void resolveCollision(Hitbox other){
+
+    }
+
+
+
+
+
+
 
     public int getHealth() {
         return health;

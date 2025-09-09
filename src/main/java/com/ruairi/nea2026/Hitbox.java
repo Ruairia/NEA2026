@@ -8,8 +8,15 @@ public class Hitbox {
         this.width = width;
         this.height = height;
     }
-    public boolean isColliding(Hitbox other){
-        return this.topLeftX < other.topLeftX + other.width && this.topLeftX + this.width > other.topLeftX && this.topLeftY < other.topLeftY + other.height && this.topLeftY + this.height > other.topLeftY;
+    public static boolean intersect(Hitbox first, Hitbox second){
+        return
+                first.topLeftX < second.topLeftX + second.width
+                &&
+                first.topLeftX + first.width > second.topLeftX
+                &&
+                first.topLeftY < second.topLeftY + second.height
+                &&
+                first.topLeftY + first.height > second.topLeftY;
     }
     public void setPosition(float x, float y){
         this.topLeftX = x;
