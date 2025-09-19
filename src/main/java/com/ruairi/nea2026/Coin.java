@@ -7,6 +7,5 @@ public class Coin {
         this.value = value;
     }
     public void collect(){
-        Main.score += value;
     }
 }
